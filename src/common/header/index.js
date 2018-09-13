@@ -76,8 +76,6 @@ class Header extends Component {
   }
 }
 
-
-
 const mapStateToProps = state => {
   return {
     focus: state.get('header').get('focus')
