@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {actionTypes} from './index'
+import {fromJS} from 'immutable'
 
 export const searchFocus = () => {
   return {
@@ -13,13 +14,18 @@ export const searchBlur = () => {
   }
 }
 
-const changeList = () => {}
+const changeList = data => {
+  return {
+    type: actionTypes.CHANGE_LIST,
+    data: fromJS(data) 
+  }
+}
 
 export const getList = () => {
   return (dispatch) => {
     axios.get('/api/headerList.json').then((res) => {
       const data = res.data
-      console.log(data)
+      dispatch(changeList(data.data)) 
     }).catch(() => {
       console.log(1234)
     })

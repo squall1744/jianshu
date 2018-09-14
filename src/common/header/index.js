@@ -33,15 +33,11 @@ class Header extends Component {
             <SearchSwitch>换一批</SearchSwitch>
           </SearchTitle>
           <SearchTab>
-            <SearchTabContent>教育</SearchTabContent>
-            <SearchTabContent>简书</SearchTabContent>
-            <SearchTabContent>生活</SearchTabContent>
-            <SearchTabContent>投稿</SearchTabContent>
-            <SearchTabContent>历史</SearchTabContent>
-            <SearchTabContent>PHP</SearchTabContent>
-            <SearchTabContent>考研</SearchTabContent>
-            <SearchTabContent>docker</SearchTabContent>
-            <SearchTabContent>EOS</SearchTabContent>
+            {
+              this.props.list.map(item => {
+                return <SearchTabContent key={item.toString()}>{item}</SearchTabContent>
+              })
+            }
           </SearchTab>
         </SearchInfo>
       )
@@ -78,7 +74,8 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    focus: state.get('header').get('focus')
+    focus: state.get('header').get('focus'),
+    list: state.get('header').get('list')
   }
 }
 
