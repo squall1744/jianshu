@@ -24,9 +24,9 @@ class Header extends Component {
     this.showSearchInfo = this.showSearchInfo.bind(this)
   }
 
-  showSearchInfo(show) {
-    if(show) {
-      return (
+  showSearchInfo() {
+    if(this.props.focus) {
+      return ( 
         <SearchInfo>
           <SearchTitle>
                 标签
@@ -85,6 +85,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeToFocus() {
+      dispatch(actionCreators.getList())
       dispatch(actionCreators.searchFocus())
     },
     changeToBlur() {

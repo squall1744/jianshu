@@ -1,4 +1,5 @@
-import * as actionTypes from './actionTypes'
+import axios from 'axios'
+import {actionTypes} from './index'
 
 export const searchFocus = () => {
   return {
@@ -9,5 +10,16 @@ export const searchFocus = () => {
 export const searchBlur = () => {
   return {
     type: actionTypes.CHANGE_TO_BLUR,
+  }
+}
+
+export const getList = () => {
+  return (dispatch) => {
+    axios.get('/api/headerList.json').then((res) => {
+      const data = res.data
+      console.log(data)
+    }).catch(() => {
+      console.log(1234)
+    })
   }
 }

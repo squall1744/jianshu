@@ -104,6 +104,7 @@ export const Button = styled.button`
   height: 38px;
   font-size: 16px;
   color: #ea6f5a;
+  background: #fff;
   border-color: #ea6f5a;
   border-radius: 19px;
   &.signUp:hover, &.write:hover {
