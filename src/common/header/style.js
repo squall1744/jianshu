@@ -50,7 +50,7 @@ export const NavItem = styled.div`
 
 export const SearchWrapper = styled.span`
   position: relative;
-    .iconfont {
+    .search {
       position: absolute;
       right: 5px;
       top: -4px;
@@ -128,7 +128,7 @@ export const SearchInfo = styled.div`
 export const SearchTitle = styled.div`
   display: flex;
   font-size: 13px;
-  line-height: 13px;
+  line-height: 16px;
   margin-top: 20px;
   margin-bottom: 15px;
   color: #969696;
@@ -137,6 +137,14 @@ export const SearchTitle = styled.div`
 
 export const SearchSwitch = styled.div`
   font-size: 13px;
+  .switch {
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 2px;
+    transition: all .5s ease-in;
+    transform: rotate(0);
+    transform: center center;
+  }
 `
 export const SearchTab = styled.div`
   display: flex;

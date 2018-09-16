@@ -1,3 +1,6 @@
 export const CHANGE_TO_FOCUS = 'header/CHANGE_TO_FOCUS'
 export const CHANGE_TO_BLUR = 'header/CHANGE_TO_BLUR'
 export const CHANGE_LIST = 'header/CHANGE_LIST'
+export const CHANGE_TO_MOUSEENTER = 'header/CHANGE_TO_MOUSEENTER'
+export const CHANGE_TO_MOUSELEAVE = 'header/CHANGE_TO_MOUSELEAVE'
+export const CHANGE_PAGE = 'header/CHANGE_PAGE'

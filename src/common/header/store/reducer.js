@@ -4,7 +4,10 @@ import { fromJS } from 'immutable'
 
 const defaultState = fromJS({
   focus: false,
-  list: []
+  mouseIn: false,
+  list: [],
+  page: 0,
+  totalPage: 1
 }) 
 
 export default (state = defaultState, action) => {
@@ -14,7 +17,16 @@ export default (state = defaultState, action) => {
   case actionTypes.CHANGE_TO_BLUR:
     return state.set('focus', false)
   case actionTypes.CHANGE_LIST:
-    return state.set('list', action.data) 
+    return state.merge({
+      list: action.data,
+      totalPage: action.totalPage
+    })
+  case actionTypes.CHANGE_TO_MOUSEENTER:
+    return state.set('mouseIn', true)
+  case actionTypes.CHANGE_TO_MOUSELEAVE:
+    return state.set('mouseIn', false)
+  case actionTypes.CHANGE_PAGE:
+    return state.set('page', action.page)
   default:
     return state
   }

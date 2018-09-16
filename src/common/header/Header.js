@@ -25,19 +25,29 @@ class Header extends Component {
   }
 
   showSearchInfo() {
-    if(this.props.focus) {
+    const page = this.props.page
+    const totalPage = this.props.totalPage
+    const list = this.props.list.toJS()
+    const pageList = []
+    if(list.length) {
+      for(let i=page*10; i<(page+1)*10; i++) {
+        if(list[i]){
+          pageList.push(<SearchTabContent key={list[i]}>{list[i]}</SearchTabContent>)
+        }else {
+          break
+        }
+      }
+    }
+
+    if(this.props.focus || this.props.mouseIn) {
       return ( 
-        <SearchInfo>
+        <SearchInfo onMouseEnter={this.props.changeToMouseEnter} onMouseLeave={this.props.changeToMouseLeave}>
           <SearchTitle>
                 标签
-            <SearchSwitch>换一批</SearchSwitch>
+            <SearchSwitch onClick={() => {this.props.handleChangePage(page, totalPage, this.icon)}}><i ref={(item) => {this.icon = item}}className="iconfont switch">&#xe604;</i>换一批</SearchSwitch>
           </SearchTitle>
           <SearchTab>
-            {
-              this.props.list.map(item => {
-                return <SearchTabContent key={item.toString()}>{item}</SearchTabContent>
-              })
-            }
+            {pageList}
           </SearchTab>
         </SearchInfo>
       )
@@ -55,9 +65,9 @@ class Header extends Component {
           <NavItem className="download">下载App</NavItem>
           <NavItem className="search">
             <SearchWrapper>
-              <NavSearch className={this.props.focus ? 'focus' : ''} onClick={this.props.changeToFocus} onBlur={this.props.changeToBlur}></NavSearch> 
-              <i className={this.props.focus ? 'focus iconfont' : 'iconfont'}>&#xe627;</i>
-              {this.showSearchInfo(this.props.focus)}
+              <NavSearch className={this.props.focus ? 'focus' : ''} onClick={() => {this.props.changeToFocus(this.props.list)}} onBlur={this.props.changeToBlur}></NavSearch> 
+              <i className={this.props.focus ? 'focus search iconfont' : 'search iconfont'}>&#xe600;</i>
+              {this.showSearchInfo()}
             </SearchWrapper>
           </NavItem>
           <NavItem className="aa">Aa</NavItem>
@@ -65,7 +75,7 @@ class Header extends Component {
         </Nav>
         <Addition>
           <Button className="signUp">注册</Button>
-          <Button className="write"><i className="iconfont">&#xe61c;</i>&nbsp;写文章</Button>
+          <Button className="write"><i className="iconfont">&#xe727;</i>&nbsp;写文章</Button>
         </Addition>
       </HeaderWrapper>
     )
@@ -75,18 +85,44 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     focus: state.get('header').get('focus'),
-    list: state.get('header').get('list')
+    list: state.get('header').get('list'),
+    page: state.getIn(['header', 'page']),
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    totalPage: state.getIn(['header', 'totalPage'])
+
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeToFocus() {
-      dispatch(actionCreators.getList())
+    changeToFocus(list) {
+      if(list.size === 0) {
+        dispatch(actionCreators.getList())
+      }
       dispatch(actionCreators.searchFocus())
     },
     changeToBlur() {
       dispatch(actionCreators.searchBlur())
+    },
+    changeToMouseEnter() {
+      dispatch(actionCreators.mouseIn())
+    },
+    changeToMouseLeave() {
+      dispatch(actionCreators.mouseOut()) 
+    },
+    handleChangePage(page, totalPage, icon) {
+      let originAngle = icon.style.transform.replace(/[^0-9]/ig, '')
+      if(originAngle) {
+        originAngle = parseInt(originAngle, 10)
+      }else {
+        originAngle = 0
+      }
+      icon.style.transform = `rotate(${originAngle+360}deg)`
+      if(page < (totalPage-1)) {
+        dispatch(actionCreators.changePage(page+1))
+      }else {
+        dispatch(actionCreators.changePage(0))
+      }
     }
   }
 }
