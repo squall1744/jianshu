@@ -84,9 +84,6 @@ export const NavSearch = styled.input.attrs({
   &.focus {
     width: 300px;
     transition: all .5s;
-    .iconfont {
-      
-    }
   }
   
 `
