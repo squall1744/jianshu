@@ -115,11 +115,22 @@ export const Button = styled.button`
 
 export const SearchInfo = styled.div`
   position: absolute;
-  left: 56px;
-  top: 56px;
+  left: 0;
+  top: 40px;
   box-shadow: 0 0 8px rgba(0,0,0,.2);
   width: 265px;
   padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: -20px ;
+    border: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+  }
 `
 
 export const SearchTitle = styled.div`

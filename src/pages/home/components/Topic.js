@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 class Topic extends Component {
   render() {
     const {topicList} = this.props
-    console.log(topicList)
     return (
       <TopicWrapper>
         {topicList.map((item) => {
@@ -14,6 +13,7 @@ class Topic extends Component {
               <img
                 className="topic-pic"
                 src={item.get('imgURL')}
+                alt=""
               />
               {item.get('title')}
             </TopicItem>

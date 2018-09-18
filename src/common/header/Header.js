@@ -43,7 +43,7 @@ class Header extends Component {
       return ( 
         <SearchInfo onMouseEnter={this.props.changeToMouseEnter} onMouseLeave={this.props.changeToMouseLeave}>
           <SearchTitle>
-                标签
+               热门搜索 
             <SearchSwitch onClick={() => {this.props.handleChangePage(page, totalPage, this.icon)}}><i ref={(item) => {this.icon = item}}className="iconfont switch">&#xe604;</i>换一批</SearchSwitch>
           </SearchTitle>
           <SearchTab>
