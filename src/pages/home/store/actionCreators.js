@@ -8,7 +8,8 @@ const changeData = homeData => {
   return {
     type: actionTypes.CHANGE_HOME_DATA,
     topicList: fromJS(data.topicList),
-    articleList: fromJS(data.articleList)
+    articleList: fromJS(data.articleList),
+    recommendList: fromJS(data.recommendList)
   }
 }
 

@@ -13,7 +13,7 @@ import {connect} from 'react-redux'
 
 class Home extends Component {
   componentDidMount() {
-    {this.props.changeHomeData()}
+    this.props.changeHomeData()
   }
   render() {
     return (

@@ -38,6 +38,28 @@
         "desc": "vuex中可以存 各种组件公用的属性。可以减少接口请求次数。安装Vuex用npm包管理工具，安装vuex，如果你用vue-cli创建了项目 然后...",
         "imgURL": "https://upload-images.jianshu.io/upload_images/8521343-79c0adfe7cd886a1.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
       }
+    ],
+    "recommendList": [
+      {
+        "id": 0,
+        "imgURL": "https://i.loli.net/2018/09/19/5ba2699029f90.png"
+      },
+      {
+        "id": 1,
+        "imgURL": "https://i.loli.net/2018/09/19/5ba26a092e9af.png"
+      },
+      {
+        "id": 2,
+        "imgURL": "https://i.loli.net/2018/09/19/5ba26a095fe2f.png"
+      },
+      {
+        "id": 3,
+        "imgURL": "https://i.loli.net/2018/09/19/5ba26a1950a88.png"
+      },
+      {
+        "id": 4,
+        "imgURL": "https://i.loli.net/2018/09/19/5ba26a1952365.png"
+      }
     ]
   }
 }
