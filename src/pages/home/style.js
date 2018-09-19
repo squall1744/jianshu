@@ -18,9 +18,9 @@ export const HomeLeft = styled.div`
 `
 
 export const HomeRight = styled.div`
-  width: 240px;
+  width: 270px;
   margin-left: 40px;
-  border: 1px solid green;
+  padding-top: 26px;
 `
 
 export const TopicWrapper = styled.div`
@@ -76,3 +76,13 @@ export const ListItem = styled.div`
 `
 
 export const ListInfo = styled.div``
+
+export const RecommendWrapper = styled.div``
+
+export const RecommendItem = styled.div`
+    .recommend-pic {
+      width: 270px;
+      height: 48px; 
+      margin-bottom: 6px;
+    }
+`
