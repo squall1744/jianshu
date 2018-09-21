@@ -17,6 +17,7 @@ import {
 } from './style'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
+import {Link} from 'react-router-dom'
 
 class Header extends Component {
   constructor(props) {
@@ -59,7 +60,9 @@ class Header extends Component {
   render() {
     return (
       <HeaderWrapper>
-        <Logo href="/" />
+        <Link to="/">
+          <Logo href="/" />
+        </Link>
         <Nav>
           <NavItem className="index">首页</NavItem>
           <NavItem className="download">下载App</NavItem>
