@@ -1,17 +1,25 @@
 import React, {Component} from 'react'
 import {DetailWrapper, Header, Content} from './style'
+import {connect} from 'react-redux'
 
 class Detail extends Component {
   render() {
+    const {title, content} = this.props
     return (
       <DetailWrapper>
         <Header>为什么腾讯不会成为一家伟大的公司？程序员有话要说</Header>
-        <Content>
-          <img src="https://upload-images.jianshu.io/upload_images/13133049-5b1a1734918a0d10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/582/format/webp" alt="" />
-        </Content>
+        <Content dangerouslySetInnerHTML={{__html: content}} />
       </DetailWrapper>
     )
   }
 }
 
-export default Detail
+const mapState = state => {
+  return {
+    title: state.getIn(['detail', 'title']),
+    content: state.getIn(['detail', 'content'])
+  }
+}
+
+
+export default connect(mapState, null)(Detail) 
