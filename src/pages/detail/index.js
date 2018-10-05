@@ -1,13 +1,18 @@
 import React, {Component} from 'react'
 import {DetailWrapper, Header, Content} from './style'
 import {connect} from 'react-redux'
+import { actionCreators } from './store'
 
 class Detail extends Component {
+  componentDidMount() {
+    this.props.getDetail(this.props.match.params.id)
+  }
+
   render() {
     const {title, content} = this.props
     return (
       <DetailWrapper>
-        <Header>为什么腾讯不会成为一家伟大的公司？程序员有话要说</Header>
+        <Header>{title}</Header>
         <Content dangerouslySetInnerHTML={{__html: content}} />
       </DetailWrapper>
     )
@@ -21,5 +26,13 @@ const mapState = state => {
   }
 }
 
+const mapDispatch = dispatch => {
+  return {
+    getDetail(id) {
+      dispatch(actionCreators.getDetail(id))
+    }
+  }
+}
 
-export default connect(mapState, null)(Detail) 
+
+export default connect(mapState, mapDispatch)(Detail) 

@@ -3,12 +3,17 @@ import {actionTypes} from './index'
 
 const defaultState = fromJS({
   title: '',
-  content: `
-  <img src="https://upload-images.jianshu.io/upload_images/13133049-5b1a1734918a0d10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/582/format/webp" alt="" />
-  <p>dfdfdfdsfsadfsadfasdfafasd</p>
-  `
+  content: '' 
 })
 
 export default (state = defaultState, action) => {
-  return state
+  switch(action.type) {
+  case actionTypes.GET_DETAIL:
+    return state.merge({
+      title: action.title,
+      content: action.content
+    })
+  default:
+    return state
+  }
 }
