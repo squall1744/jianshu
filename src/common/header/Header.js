@@ -17,6 +17,7 @@ import {
 } from './style'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
+import {actionCreators as loginActionCreators} from '../../pages/login/store'
 import {Link} from 'react-router-dom'
 
 class Header extends Component {
@@ -74,7 +75,9 @@ class Header extends Component {
             </SearchWrapper>
           </NavItem>
           <NavItem className="aa">Aa</NavItem>
-          <NavItem className="signIn">登陆</NavItem>
+          {
+            this.props.login ? <NavItem className="signIn" onClick={this.props.logout}>退出</NavItem> : <Link to="/login"><NavItem className="signIn">登陆</NavItem></Link> 
+          }
         </Nav>
         <Addition>
           <Button className="signUp">注册</Button>
@@ -91,8 +94,8 @@ const mapStateToProps = state => {
     list: state.get('header').get('list'),
     page: state.getIn(['header', 'page']),
     mouseIn: state.getIn(['header', 'mouseIn']),
-    totalPage: state.getIn(['header', 'totalPage'])
-
+    totalPage: state.getIn(['header', 'totalPage']),
+    login: state.getIn(['login', 'login'])
   }
 }
 
@@ -126,6 +129,9 @@ const mapDispatchToProps = dispatch => {
       }else {
         dispatch(actionCreators.changePage(0))
       }
+    },
+    logout() {
+      dispatch(loginActionCreators.logout())
     }
   }
 }

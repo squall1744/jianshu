@@ -131,6 +131,7 @@ export const SearchInfo = styled.div`
     border: 10px solid transparent;
     border-bottom: 10px solid #fff;
   }
+  z-index: 1
 `
 
 export const SearchTitle = styled.div`
